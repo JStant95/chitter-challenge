@@ -7,6 +7,7 @@ class User
     @username = username
     @email = email
     @id = id
+    @current_user = ''
   end
 
   def self.all
@@ -29,5 +30,13 @@ class User
 
     result = connection.exec("INSERT INTO users (username, email) VALUES('#{username}', '#{email}') RETURNING id, username, email")
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
+  end
+
+  def self.current_user?(user)
+    @@current_user = user
+  end
+
+  def self.current_user
+    @@current_user
   end
 end

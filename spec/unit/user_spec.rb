@@ -25,5 +25,5 @@ describe User do
       expect(user.username).to eq 'jed999'
       expect(user.email).to eq 'jedo@makers.com'
     end
-  end
+  end 
 end
